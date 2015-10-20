@@ -1,9 +1,13 @@
 class PostsController < ApplicationController
   before_action :get_posts, :except => [:show]
-  before_action :authenticate_user!, :only => [:create, :new, :destroy, :edit, :update]
+  before_action :authenticate_user!, :only => [:create, :new, :destroy, :edit, :update, :show]
 
   def index
 
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   def new
@@ -37,6 +41,7 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
+
 
 private
   def post_params

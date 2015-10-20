@@ -4,7 +4,7 @@
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading" >
-        <%= post.title %>
+        <%= link_to post.title, post_path(post) %>
       </div>
       <div class="panel-body">
         <h3><%= post.body %></h3>
