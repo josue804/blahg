@@ -8,6 +8,7 @@
       </div>
       <div class="panel-body">
         <h3><%= post.body %></h3>
+        <p>Tags: <small><%= post.tags.first.name %></small></p>
         <small><%= post.created_at.in_time_zone.strftime("%m/%d/%Y at %I:%M%p") %></small>
       <% if user_signed_in? %>
         <p><%= link_to "Edit", edit_post_path(post), style: "float:right" %></p>
@@ -15,7 +16,6 @@
         <p><%= link_to "Delete", post_path(post), data: {confirm: "Delete?",
                                                           method: "delete"}, style: "float:right" %></p>
       </div>
-
       <% end %>
     </div>
   </div>
