@@ -11,9 +11,3 @@ user.email = 'admin@gmail.com'
 user.password = 'tacotaco'
 user.password_confirmation = 'tacotaco'
 user.save!
-
-post = Post.new
-post.title = "Code Review"
-post.body = "Today I wrote my code review"
-post.tags.new(name: "Here is my tag")
-post.save

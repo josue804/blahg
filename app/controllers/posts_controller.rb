@@ -16,7 +16,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    tags = tag_params[:name].split(" ")
     if @post.save
+      tags.each do |tag|
+        tag_name = Tag.find_or_create_by(name: tag)
+        @post.tags.push(tag_name)
+      end
       redirect_to posts_path
     else
       render :new
@@ -45,7 +50,11 @@ class PostsController < ApplicationController
 
 private
   def post_params
-    params.require(:post).permit(:title, :body, :author)
+    params.permit(:title, :body, :author)
+  end
+
+  def tag_params
+    params.permit(:name)
   end
 
   def get_posts
