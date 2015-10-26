@@ -5,14 +5,38 @@
     </div>
     <div class="panel-body">
       <h3><%= @post.body %></h3>
+      <p><small>
+        Tags:
+        <% @post.tags.each do |tag| %>
+          <%= link_to tag.name, tag_path(tag) %>
+        <% end %>
+      <p></small>
       <small><%= @post.created_at.in_time_zone.strftime("%m/%d/%Y at %I:%M%p") %></small>
     <% if user_signed_in? %>
       <p><%= link_to "Edit", edit_post_path(@post), style: "float:right" %></p>
       <br>
       <p><%= link_to "Delete", post_path(@post), data: {confirm: "Delete?",
                                                         method: "delete"}, style: "float:right" %></p>
-    </div>
-
     <% end %>
+    </div>
   </div>
+
+  <hr>
+
+  <%= link_to "Add Comment", new_post_comment_path(@post), class: "btn btn-primary" %>
+
+  <br><br>
+  <h3><%= @post.comments.length %> comments</h3>
+
+  <% @post.comments.each do |comment| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= comment.author %>
+      </div>
+      <div class="panel-body">
+        <p><%= comment.body %></p>
+        <small><%= comment.created_at.in_time_zone.strftime("%m/%d/%Y at %I:%M%p") %></small>
+      </div>
+    </div>
+  <% end %>
 </div>

@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "the add a list process" do
   it "adds a new post" do
     visit posts_path
-    click_link 'Add Post'
+    find('#clicky').click
     fill_in 'Title', :with => 'Home stuff'
     fill_in 'Body', :with => 'Car stuff'
     fill_in '#tags', :with => '#testing #is #no #fun'

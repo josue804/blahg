@@ -21,7 +21,7 @@
             <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>
           </li>
           <li>
-            <%= link_to 'Add Post', new_post_path, :class => 'navbar-link' %>
+            <%= link_to 'Add Post', new_post_path, :class => 'navbar-link', id: "clicky" %>
           </li>
           <li>
             <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
